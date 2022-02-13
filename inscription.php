@@ -1,5 +1,19 @@
 <?php
 
+//on verifie si le form a ete envoyer 
+if(!empty($_POST)){
+    // var_dump($_POST);
+    //le formulaire a ete envoyer 
+    //on verifie que les champs on ete remplir
+    if(isset($_POST["nickname"]) ,$_POST["email"], $_POST["pass"]
+    && !empty($_POST["nickname"]) && !empty($_POST["email"])&& !empty($_POST["pass"])
+    ){
+
+    }else{
+    die("le formulaire n'est pas complet");
+    }
+}
+
 //inclu le header
 require 'includes/header.php';
 
@@ -8,33 +22,27 @@ require 'includes/header.php';
 
  ?>
 
- <p> contenu de la page accueill </p>
+ <h1> inscription </h1>
+
+ <form action="" method="post">
+      <div>
+          <label for="pseudo">pseudo</label>
+          <input type="text" name="nickname" id="pseudo">
+      </div>
+      <div>
+          <label for="Email">Email</label>
+          <input type="Email"name="email" id="Email"></input>
+      </div>
+      <div>
+          <label for="pass">Mot de passe </label>
+          <input type="password" name="pass" id="pass"></input>
+      </div>
+      <button type="submit"> Inscription </button>
+    </form>
  
  
 <?php
-require "includes/connect.php";
 
-$username="demo";
-$password="az";
-
-$sql = "SELECT * FROM `users` WHERE `username`=:username AND `pass`=:pass";
-
-
-//on prepare la reuete
-$query = $db->prepare($sql); 
-
-//on injecte les valeurs
-$query->bindValue(":username",$username, PDO::PARAM_STR);
-$query->bindValue(":pass",$password, PDO::PARAM_STR);
-
-//on execute  la requete
-$query->execute();
-
-$user = $query->fetchAll();
-
-echo "<pre>";
-var_dump($user);
-echo "</pre>";
 //inclu le footer
 require 'includes/footer.php';
 
