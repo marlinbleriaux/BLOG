@@ -1,4 +1,6 @@
 <?php
+//definie le titre la base
+$titre = "INSCRIPTION";
 
 //on verifie si le form a ete envoyer 
 if(!empty($_POST)){
@@ -36,8 +38,24 @@ if(!empty($_POST)){
 
          $query->execute();
 
+
+         //on recuper l'id de
+         $id= $db->lastInsertId();
+
          //on connect l'utilisateur
-         
+          //on vas connecter l'utilisateur
+        //on demare laa session
+       session_start();
+
+       //on vas stocker  dans une session les infos de l'utilisateur
+       $_SESSION["user"]=[
+           "id" => $id;
+           "pseudo" => $pseudo["pseudo"];
+           "email" => $_POST["email"];
+           "roles" => [" ROLE_USER"]
+       ];  
+    //on redirige vers la page de profile
+      header("Location: profile.php");
       
     }else{
     die("le formulaire n'est pas complet");
