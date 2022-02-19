@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require "includes/connect.php";
   
 $sql = "SELECT * FROM `articles` ORDER BY `creat_at`  DESC";

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //inclu le header
 require 'includes/header.php';

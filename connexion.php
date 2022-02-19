@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $titre = "connexion";
 
 //on verifie si le form a ete envoyer 
@@ -48,13 +50,13 @@ $titre = "connexion";
          //ici l' utilisateuret le mot de passe sont correct 
         //on vas connecter l'utilisateur
         //on demare laa session
-       session_start();
+    //    session_start();
 
        //on vas stocker  dans une session les infos de l'utilisateur
        $_SESSION["user"] = [
-           "id"=>$user["id"];
-           "pseudo"=>$user["pseudo"];
-           "email"=>$user["email"];
+           "id"=>$user["id"],
+           "pseudo"=>$user["pseudo"],
+           "email"=>$user["email"],
            "roles"=>$user["roles"]
        ];  
     //on redirige vers la page de profile

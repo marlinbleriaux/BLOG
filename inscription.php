@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //definie le titre la base
 $titre = "INSCRIPTION";
 
@@ -44,18 +46,18 @@ if(!empty($_POST)){
 
          //on connect l'utilisateur
           //on vas connecter l'utilisateur
-        //on demare laa session
-       session_start();
+        //on demare la session
+    //    session_start();
 
        //on vas stocker  dans une session les infos de l'utilisateur
        $_SESSION["user"]=[
-           "id" => $id;
-           "pseudo" => $pseudo["pseudo"];
-           "email" => $_POST["email"];
+           "id" => $id,
+           "pseudo" => $pseudo,
+           "email" => $_POST["email"],
            "roles" => [" ROLE_USER"]
        ];  
     //on redirige vers la page de profile
-      header("Location: profile.php");
+      header("Location: profil.php");
       
     }else{
     die("le formulaire n'est pas complet");
@@ -92,6 +94,6 @@ require 'includes/header.php';
  
 <?php
 
-//inclu le footer
+//inclure le footer
 require 'includes/footer.php';
 
